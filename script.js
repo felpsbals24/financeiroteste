@@ -10,9 +10,7 @@ const supabaseClient = window.supabase.createClient(
     SUPABASE_ANON_KEY
 );
 
-const supabaseClient = supabaseConfigurado
-    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-    : null;
+
 
 const abas = document.querySelectorAll(".aba");
 const abaRecebimentos = document.getElementById("abaRecebimentos");
