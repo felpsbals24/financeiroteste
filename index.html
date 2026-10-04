@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="topo">
+        <div>
+            <h1>Financeiro</h1>
+            <p>Controle diário</p>
+        </div>
+        <div class="mes-atual" id="mesAtual"></div>
+    </header>
+
+    <section class="resumo">
+        <div class="card-resumo recebimento">
+            <span>Recebimentos</span>
+            <strong id="totalRecebimentos">R$ 0,00</strong>
+        </div>
+        <div class="card-resumo pagar">
+            <span>Contas a pagar</span>
+            <strong id="totalPagar">R$ 0,00</strong>
+        </div>
+        <div class="card-resumo saldo">
+            <span>Saldo</span>
+            <strong id="saldo">R$ 0,00</strong>
+        </div>
+    </section>
+
+    <nav class="abas">
+        <button class="aba ativa" data-aba="recebimentos">Recebimentos</button>
+        <button class="aba" data-aba="pagar">A pagar</button>
+    </nav>
+
+    <main>
+        <section id="abaRecebimentos" class="conteudo-aba ativa">
+            <div class="cabecalho-secao">
+                <div>
+                    <h2>Recebimentos</h2>
+                    <p>Controle dos valores recebidos por dia.</p>
+                </div>
+                <input type="month" id="mesRecebimentos">
+            </div>
+
+            <form id="formRecebimento" class="formulario">
+                <h3>Lançar recebimento</h3>
+                <div class="grid-form">
+                    <div class="campo">
+                        <label>Data</label>
+                        <input type="date" id="dataRecebimento" required>
+                    </div>
+                    <div class="campo">
+                        <label>Crédito / Débito</label>
+                        <input type="number" id="creditoDebito" step="0.01" min="0" placeholder="0,00">
+                    </div>
+                    <div class="campo">
+                        <label>Dinheiro</label>
+                        <input type="number" id="dinheiro" step="0.01" min="0" placeholder="0,00">
+                    </div>
+                    <div class="campo">
+                        <label>Pix</label>
+                        <input type="number" id="pix" step="0.01" min="0" placeholder="0,00">
+                    </div>
+                    <div class="campo">
+                        <label>Alimentação</label>
+                        <input type="number" id="alimentacao" step="0.01" min="0" placeholder="0,00">
+                    </div>
+                </div>
+                <button type="submit" class="btn principal">Salvar recebimento</button>
+            </form>
+
+            <div class="tabela-container">
+                <div class="titulo-tabela"><h3>Movimentações do mês</h3></div>
+                <div id="listaRecebimentos"></div>
+            </div>
+        </section>
+
+        <section id="abaPagar" class="conteudo-aba">
+            <div class="cabecalho-secao">
+                <div>
+                    <h2>Contas a pagar</h2>
+                    <p>Controle das despesas e vencimentos.</p>
+                </div>
+                <input type="month" id="mesPagar">
+            </div>
+
+            <form id="formConta" class="formulario">
+                <h3>Nova conta</h3>
+                <div class="grid-form">
+                    <div class="campo">
+                        <label>Data de vencimento</label>
+                        <input type="date" id="dataConta" required>
+                    </div>
+                    <div class="campo">
+                        <label>Descrição</label>
+                        <input type="text" id="descricaoConta" placeholder="Ex: Fornecedor" required>
+                    </div>
+                    <div class="campo">
+                        <label>Tipo</label>
+                        <select id="tipoConta">
+                            <option value="variavel">Variável</option>
+                            <option value="fixa">Fixa</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Categoria</label>
+                        <select id="categoriaConta">
+                            <option value="">Selecione</option>
+                            <option value="agua">Água</option>
+                            <option value="luz">Luz</option>
+                            <option value="internet">Internet</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Valor</label>
+                        <input type="number" id="valorConta" step="0.01" min="0" placeholder="0,00" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn principal">Adicionar conta</button>
+            </form>
+
+            <div class="tabela-container">
+                <div class="titulo-tabela"><h3>Contas do mês</h3></div>
+                <div id="listaContas"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="notificacao" class="notificacao"></div>
+    <script src="script.js"></script>
+</body>
+</html>
