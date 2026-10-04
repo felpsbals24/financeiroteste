@@ -1,9 +1,14 @@
-const SUPABASE_URL = https://pahwkqvuyuapyrnlfsau.supabase.co; 
-const SUPABASE_ANON_KEY = sb_publishable_ZUCZQSBa4Crkd-bclLyhaw_BMBcqRjT;
+// ============================================
+// CONFIGURAÇÃO SUPABASE
+// ============================================
 
-const supabaseConfigurado =
-    !SUPABASE_URL.includes(https://pahwkqvuyuapyrnlfsau.supabase.co) &&
-    !SUPABASE_ANON_KEY.includes(sb_publishable_ZUCZQSBa4Crkd-bclLyhaw_BMBcqRjT);
+const SUPABASE_URL = "https://pahwkqvuyuapyrnlfsau.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_ZUCZQSBa4Crkd-bclLyhaw_BMBcqRjT";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
 
 const supabaseClient = supabaseConfigurado
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
