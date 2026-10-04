@@ -1,9 +1,9 @@
-const SUPABASE_URL = "COLOQUE_SUA_URL_AQUI";
-const SUPABASE_ANON_KEY = "COLOQUE_SUA_ANON_KEY_AQUI";
+const SUPABASE_URL = https://pahwkqvuyuapyrnlfsau.supabase.co; 
+const SUPABASE_ANON_KEY = sb_publishable_ZUCZQSBa4Crkd-bclLyhaw_BMBcqRjT;
 
 const supabaseConfigurado =
-    !SUPABASE_URL.includes("COLOQUE_SUA_URL_AQUI") &&
-    !SUPABASE_ANON_KEY.includes("COLOQUE_SUA_ANON_KEY_AQUI");
+    !SUPABASE_URL.includes(https://pahwkqvuyuapyrnlfsau.supabase.co) &&
+    !SUPABASE_ANON_KEY.includes(sb_publishable_ZUCZQSBa4Crkd-bclLyhaw_BMBcqRjT);
 
 const supabaseClient = supabaseConfigurado
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
